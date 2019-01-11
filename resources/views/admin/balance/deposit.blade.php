@@ -24,7 +24,7 @@
             </div>
             <div class="box-body">
                 <div class="form-group">
-                    <input type="text" placeholder="Valor Recarga">
+                    <input type="text" name="value" placeholder="Valor Recarga">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success" type="submit">Recarregar</button>
