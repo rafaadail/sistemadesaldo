@@ -38,4 +38,15 @@ class BalanceController extends Controller
             ->back()
             ->with('error', $response['message']);
     }
+
+    public function withdrawn()
+    {
+        return view('admin.balance.withdrawn');
+    }
+
+    public function withdrawnStore(MoneyValidationFormRequest $request)
+    {
+
+        dd($request->all());
+    }
 }
