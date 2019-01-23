@@ -22,7 +22,7 @@
         <div class="box-body">
             @include('admin.includes.alerts')
 
-            <form method="POST" action="{{ route('withdrawn.store') }}">
+            <form method="POST" action="{{ route('withdraw.store') }}">
                 {!! csrf_field() !!}
 
                 <div class="form-group">
