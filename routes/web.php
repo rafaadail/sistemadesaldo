@@ -2,6 +2,9 @@
 
 $this->group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'admin'], function(){
 
+    $this->get('transfer', 'BalanceController@transfer')->name('balance.transfer');
+    $this->post('confirm-transfer', 'BalanceController@confirmTransfer')->name('confirm.transfer');
+
     $this->get('withdraw', 'BalanceController@withdraw')->name('balance.withdraw');
     $this->post('withdraw', 'BalanceController@withdrawStore')->name('withdraw.store');
 
