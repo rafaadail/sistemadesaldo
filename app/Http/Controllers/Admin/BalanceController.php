@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MoneyValidationFormRequest;
+use App\Models\Historic;
 
 class BalanceController extends Controller
 {
@@ -110,16 +111,22 @@ class BalanceController extends Controller
         return redirect()
             ->route('balance.transfer')
             ->with('error', $response['message']);
-
     }
 
-    public function historic()
+    public function historic(Historic $historic)
     {
         $historics = auth()->user()
             ->historics()
             ->with(['userSender'])
             ->paginate($this->totalPage);
 
-        return view('admin.balance.historics', compact('historics'));
+        $types = $historic->type();
+
+        return view('admin.balance.historics', compact('historics', 'types'));
+    }
+
+    public function searchHistoric(Request $request)
+    {
+        dd($request->all());
     }
 }
