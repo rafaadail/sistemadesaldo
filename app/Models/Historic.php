@@ -30,6 +30,11 @@ class Historic extends Model
         return $types[$type];
     }
 
+    public function scopeUserAuth($query)
+    {
+        $query->where('user_id', auth()->user()->id);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -57,6 +62,9 @@ class Historic extends Model
             if(isset($data['type']))
                 $query->where('type', $data['type']);
         })
+        ->userAuth()
+//        ->where('user_id', auth()->user()->id)
+        ->with(['userSender'])
         ->paginate($totalPage);
 
         return $historics;
