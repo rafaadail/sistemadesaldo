@@ -29,6 +29,11 @@ class Historic extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function userSender()
+    {
+        return $this->belongsTo(User::class, 'user_id_transaction');
+    }
+
     public function getDateAttribute($value)
     {
         return Carbon::parse($value)->format('d/m/Y');
