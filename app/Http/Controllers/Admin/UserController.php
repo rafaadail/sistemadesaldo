@@ -14,6 +14,12 @@ class UserController extends Controller
 
     public function profileUpdate(Request $request)
     {
-        dd($request->all());
+        $data = $request->all();
+
+        if ($data['password'] != null) {
+           $data['password'] = bcrypt(($data['password']));
+        }
+
+        auth()->user()->update($data);
     }
 }
