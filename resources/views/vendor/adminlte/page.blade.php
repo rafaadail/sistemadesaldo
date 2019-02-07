@@ -57,6 +57,54 @@
                 <div class="navbar-custom-menu">
 
                     <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="{{ url('storage/users/'.auth()->user()->image) }}" class="user-image" alt="{{ auth()->user()->image }}">
+                                <span class="hidden-xs">{{ auth()->user()->name }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="{{ url('storage/users/'.auth()->user()->image) }}" class="img-circle" alt="{{ auth()->user()->image }}">
+
+                                    <p>
+                                        {{ auth()->user()->name }}
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                {{--<li class="user-body">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-xs-4 text-center">--}}
+                                            {{--<a href="#">Followers</a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-xs-4 text-center">--}}
+                                            {{--<a href="#">Sales</a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-xs-4 text-center">--}}
+                                            {{--<a href="#">Friends</a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<!-- /.row -->--}}
+                                {{--</li>--}}
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Perfil</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sair</a>
+                                        <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
+                                            @if(config('adminlte.logout_method'))
+                                                {{ method_field(config('adminlte.logout_method')) }}
+                                            @endif
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
                                 <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
