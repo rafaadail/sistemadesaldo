@@ -6,6 +6,7 @@
 
 <h1>Meu Perfil</h1>
 
+@include('admin.includes.alerts')
 
 <form action="{{ route('profile.update') }}" method="POST">
     {!! csrf_field() !!}
@@ -20,7 +21,7 @@
     </div>
     <div class="form-group">
         <label for="password">Senha</label>
-        <input type="text" name="password" placeholder="Senha" class="form-control">
+        <input type="password" name="password" placeholder="Senha" class="form-control">
 
     </div>
     <div class="form-group">
